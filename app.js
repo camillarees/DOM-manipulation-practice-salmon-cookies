@@ -1,27 +1,22 @@
 "use strict";
 
-let hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm"];
 let locations = ['seattle', 'tokyo', 'dubai', 'paris', 'lima'];
 
 function randomNumberCust(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min );
 }
 
-// function getH3Names (){
+function getH3Names (){
   for(let i = 0; i < locations.length; i++) {
     let h3Name = document.getElementById(locations[i].name);
     let li = document.createElement('li');
     li.innerText = h3Name;
     console.log(h3Name);
   }
+}
 
-  // function getHoursList (){
-    for (let i = 0; i <= hours.length; i++) {
-      let hour = hours[i];
-      let li = document.createElement('li');
-      li.innerText = hour;
-      console.log(hour);
-      }
+getH3Names();
+  
 
 // Objects
 
@@ -30,6 +25,7 @@ let seattle = {
   minCust: 23,
   maxCust: 65,
   avgSale: 6.3,
+  hours: ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm"],
   hourlyCust: [],
   hourlyCookies: [],
   getRandomCust: function() {
@@ -38,12 +34,16 @@ let seattle = {
   getAvgCookies: function() {
      {return Math.floor(this.avgSale * this.getRandomCust())};
   },
-  displayAvgCookies: function () {
-    let avgCookies = getAvgCookies();
+  displayAvgCookiesandHours: function () {
+    let hour = this.hours.length
     let li = document.createElement('li');
-    li.innerText = avgCookies;
-    console.log(avgCookies);
-  }
+    li.innerText = hour;
+    console.log(hour);
+    let avgCookies = this.getAvgCookies();
+    let li2 = document.createElement('li');
+    li2.innerText = `${hour}: ${avgCookies} cookies`;
+    console.log(li2);
+  },
 };
 for(let i = 0; i < 14; i++) {
   seattle.hourlyCust.push(seattle.getRandomCust());
@@ -52,7 +52,7 @@ for(let i = 0; i < 14; i++) {
   seattle.hourlyCookies.push(seattle.getAvgCookies());
 }
 for(let i = 0; i < 14; i++) {
-  seattle.displayAvgCookies();
+  seattle.displayAvgCookiesandHours();
 }
 console.log(seattle);
 
@@ -143,5 +143,3 @@ let lima = {
     lima.hourlyCookies.push(lima.getAvgCookies());
   }
 console.log(lima);
-
-
