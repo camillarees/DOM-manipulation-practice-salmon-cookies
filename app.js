@@ -17,6 +17,7 @@ function getH3Names (){
 
 getH3Names();
   
+let hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm"];
 
 // Objects
 
@@ -25,24 +26,35 @@ let seattle = {
   minCust: 23,
   maxCust: 65,
   avgSale: 6.3,
-  hours: ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm"],
   hourlyCust: [],
   hourlyCookies: [],
+  total: 0,
   getRandomCust: function() {
     return randomNumberCust(this.minCust, this.maxCust);
   },
   getAvgCookies: function() {
      {return Math.floor(this.avgSale * this.getRandomCust())};
   },
-  displayAvgCookiesandHours: function () {
-    let hour = this.hours.length
-    let li = document.createElement('li');
-    li.innerText = hour;
-    console.log(hour);
-    let avgCookies = this.getAvgCookies();
-    let li2 = document.createElement('li');
-    li2.innerText = `${hour}: ${avgCookies} cookies`;
-    console.log(li2);
+  render: function () {
+    let location = document.getElementById('seattle');
+    for(let i = 0; i < 14; i++) {
+      let li = document.createElement('li');
+      let avgCookies = this.getAvgCookies();
+      li.innerText = `${hours[i]}: ${avgCookies} cookies`;
+      location.appendChild(li);
+      console.log(li);
+    }
+    },
+    renderTotal: function() {
+      let total = document.getElementById('seattle');
+      let li2 = document.createElement('li');
+      let totalCookies = this.sumTotal();
+      li2.innerText = `Total: ${totalCookies} cookies`;
+      total.appendChild(li2);
+      console.log(li2);
+  },
+  sumTotal: function() {
+    return (total += this.getAvgCookies());
   },
 };
 for(let i = 0; i < 14; i++) {
@@ -51,9 +63,11 @@ for(let i = 0; i < 14; i++) {
 for(let i = 0; i < 14; i++) {
   seattle.hourlyCookies.push(seattle.getAvgCookies());
 }
-for(let i = 0; i < 14; i++) {
-  seattle.displayAvgCookiesandHours();
-}
+
+seattle.render();
+
+seattle.renderTotal();
+
 console.log(seattle);
 
 let tokyo = {
