@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+}
+
+table {
+    margin: auto;
+    border-spacing: 1px
+}
+
+table, th, td {
+    border: 1px solid black
+}
+
+th, td {
+    padding: 1rem;
+}
+
+td {
+    background-color: coral;
+    color: black;
+}
