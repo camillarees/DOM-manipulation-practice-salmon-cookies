@@ -1,5 +1,36 @@
 h1 {
     text-align: center;
+    font-family: Helvetica;
+}
+
+h2 {
+    text-align: center;
+    background-color: lightcoral;
+    padding: 10px;
+    margin: 0;
+    border: 1rem;
+    border-color: black;
+    font-family: Helvetica;
+}
+
+ul, li {
+    text-align: center;
+    background-color: lightpink;
+    padding: 10px;
+    margin: 0;
+    font-family: Helvetica;
+}
+
+p {
+    text-align: center;
+    background-color: lightpink;
+    padding: 10px;
+    margin: 0;
+    font-family: Helvetica;
+}
+
+nav {
+    text-align: center;
 }
 
 table {
@@ -16,6 +47,11 @@ th, td {
 }
 
 td {
+    background-color: coral;
+    color: black;
+}
+
+#table-footer {
     background-color: coral;
     color: black;
 }

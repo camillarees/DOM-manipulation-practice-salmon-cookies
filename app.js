@@ -3,6 +3,7 @@ let locations = ['seattle', 'tokyo', 'dubai', 'paris', 'lima'];
 let hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm"];
 let allLocations = [];
 locationTotals = [];
+grandTotal = 0;
 
 function randomNumberCust(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min );
@@ -99,16 +100,51 @@ createTableHeader();
     let dailyLocationTotalsData = document.createElement('td');
         dailyLocationTotalsData.textContent = this.total;
         tableRow.appendChild(dailyLocationTotalsData);
-
-        //   for (let i = 0; i < hoursArr.length; i ++){
-//     cell = document.createElement('td');
-//     cell.innerText = this.sales[i];
-//     row.appendChild(cell);
-// }
-        
+    grandTotal += this.total
   };
 
-
+  function createTableFooter() {
+    let table = document.getElementById('table');
+    let tableFooter = document.createElement('tfoot');
+      table.appendChild(tableFooter);
+    let tableRow = document.createElement('tr');
+      tableFooter.appendChild(tableRow);
+    let rowHeader = document.createElement('th');
+    rowHeader.textContent = 'Totals';
+    tableRow.appendChild(rowHeader);
+    // let footerTotals = [];
+      for(let i = 0; i < locationTotals.length; i++) {
+          let locationTotals = [];
+          footerTotals = document.createElement('tfoot');
+          footerTotalData = document.createElement('td');
+          footerTotalData.textContent = locationTotals[i];
+          footerTotals.appendChild(footerTotalsData);
+          // locationTotals[i] = 0
+          };
+          locationTotals += Location.all[j].hourlyCookies[i];
+          footerTotals += Location.all[j].hourlyCookies[i];
+       }
+        
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   let locationName = event.target.location.value;
+  //   let minCust = +event.target.mincust.value;
+  //   let maxCust = +event.target.maxcust.value;
+  //   let avgCookies = +event.target.avgcookies.value;
+  //   let newStore = new Store(locationName, minCust, maxCust, avgCookies);
+  //   newStore.render();
+  
+  //   document.getElementById('store-table').deleteRow(-1);
+  //   renderTableFooter();
+  // }
+  
+  // new Store ('Seattle', 23, 65, 6.3);
+  // new Store ('Tokyo', 3, 25, 1.2);
+  // new Store ('Dubai', 11, 38, 3.7);
+  // new Store ('Paris', 20, 38, 2.3);
+  // new Store ('Lima', 2, 16, 4.6);
+  
+  // myForm.addEventListener('submit', handleSubmit);
 
 // Each cookie stand location should have a separate render() method that creates and appends its row to the table
   seattle.getRandomCust();
@@ -119,11 +155,13 @@ createTableHeader();
 
 createLocationRows();
 
-seattle.renderTotal();
-tokyo.renderTotal();
-dubai.renderTotal();
-paris.renderTotal();
-lima.renderTotal();
+// seattle.renderTotal();
+// tokyo.renderTotal();
+// dubai.renderTotal();
+// paris.renderTotal();
+// lima.renderTotal();
+
+createTableFooter();
 
 
 
