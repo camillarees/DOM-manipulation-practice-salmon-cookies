@@ -21,6 +21,33 @@
         </tfoot> 
     </table>
     <div>
+
+    <br><br>
+    <hr>
+    <form id="addLocationForm">
+        <fieldset>
+        <legend>Add Location</legend>
+            <label>
+                Location Name
+                <input type="text" name="name" id="nameTextBox" placeholder="Enter the name of the location" required/>
+            </label>
+            <label>
+                Location Minimum Customers
+                <input type="number" name="minCust" id="minCustTextBox" placeholder="Enter the minimun amount of customers for the location" required/>
+            </label>
+            <label>
+                Location Maximum Customers
+                <input type="number" name="maxCust" id="maxCustTextBox" placeholder="Enter the maximum amount of customers for the location" required/>
+            </label>
+            <label>
+                Location Average Sale
+                <input type="text" name="avgSale" id="avgSaleTextBox" placeholder="Enter the average sale for the location" required/>
+            </label>
+        </fieldset>
+            <label>
+                <input type="submit">
+            </label>
+       </form>    
            
     <script src="app.js"></script>
 </body>

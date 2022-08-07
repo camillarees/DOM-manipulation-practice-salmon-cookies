@@ -105,43 +105,26 @@ createTableHeader();
 
   function createTableFooter() {
     let tableFooter = document.createElement('tfoot');
-      table.appendChild(tableFooter);
+    table.appendChild(tableFooter);
     let tableRow = document.createElement('tr');
       tableFooter.appendChild(tableRow);
     let rowHeader = document.createElement('th');
     rowHeader.textContent = 'Totals';
     tableRow.appendChild(rowHeader);
     for(let i = 0; i < hours.length; i++) {
-      let locationTotals = 0;
+      let totalofTotals = 0;
       for(let j = 0; j < allLocations.length; j++) {
-        locationTotals += allLocations[j].hourlyCookies[i];
+        totalofTotals += allLocations[j].hourlyCookies[i];
     }
     let hourlyTotals = document.createElement('td');
-    hourlyTotals.textContent = locationTotals;
+    hourlyTotals.textContent = totalofTotals;
     tableRow.appendChild(hourlyTotals); 
   }
+  let grandTotalCell = document.createElement('td');
+    grandTotalCell.textContent = grandTotal;
+    tableRow.appendChild(grandTotalCell);
+    tableFooter.appendChild(tableRow);
 };
-
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   let locationName = event.target.location.value;
-  //   let minCust = +event.target.mincust.value;
-  //   let maxCust = +event.target.maxcust.value;
-  //   let avgCookies = +event.target.avgcookies.value;
-  //   let newStore = new Store(locationName, minCust, maxCust, avgCookies);
-  //   newStore.render();
-  
-  //   document.getElementById('store-table').deleteRow(-1);
-  //   renderTableFooter();
-  // }
-  
-  // new Store ('Seattle', 23, 65, 6.3);
-  // new Store ('Tokyo', 3, 25, 1.2);
-  // new Store ('Dubai', 11, 38, 3.7);
-  // new Store ('Paris', 20, 38, 2.3);
-  // new Store ('Lima', 2, 16, 4.6);
-  
-  // myForm.addEventListener('submit', handleSubmit);
 
 // Each cookie stand location should have a separate render() method that creates and appends its row to the table
   seattle.getRandomCust();
@@ -152,13 +135,44 @@ createTableHeader();
 
 createLocationRows();
 
-// seattle.renderTotal();
-// tokyo.renderTotal();
-// dubai.renderTotal();
-// paris.renderTotal();
-// lima.renderTotal();
-
 createTableFooter();
+
+// function removeTableFooter(){
+//   let tableFooterElem = document.createElement('tfoot');
+//   let tableRowElem = document.createElement('tfoot');
+//   while (tableRowElem.hasChildNodes()) {
+//     tableRowElem.removeChild(tableRowElem.lastChild);
+//   }
+//   tableRowElem.remove();
+//   tableFooterElem.remove();
+// }
+
+// // Event Handler
+
+// function addLocation(event) {
+//   event.preventDefault();
+//   let form = event.target;
+//   let locationName = form.name.value;
+//   let locationMinCust = parseInt(form.minCust.value);
+//   let locationMaxCust = parseInt(form.maxCust.value);
+//   let locationAvgSale = parseFloat(form.avgSale.value);
+//   console.log(locationName, locationMinCust, locationMaxCust, locationAvgSale);
+//   let newLocation = new Location(locationName, locationMinCust, locationMaxCust, locationAvgSale);
+  
+//   form.name.value = null;
+//   form.minCust.value = null;
+//   form.maxCust.value = null;
+//   form.avgSale.value = null;
+
+//   tableFooter.innerHTML = "";
+//   createTableFooter();
+  
+// };
+
+// // Event Listener
+
+// let addLocationForm = document.getElementById('addLocationForm');
+// addLocationForm.addEventListener('submit', addLocation);
 
 
 
