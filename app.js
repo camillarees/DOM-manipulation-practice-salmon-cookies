@@ -105,6 +105,7 @@ createTableHeader();
 
   function createTableFooter() {
     let tableFooter = document.createElement('tfoot');
+    tableFooter.setAttribute('id','tfoot');
     table.appendChild(tableFooter);
     let tableRow = document.createElement('tr');
       tableFooter.appendChild(tableRow);
@@ -137,42 +138,33 @@ createLocationRows();
 
 createTableFooter();
 
-// function removeTableFooter(){
-//   let tableFooterElem = document.createElement('tfoot');
-//   let tableRowElem = document.createElement('tfoot');
-//   while (tableRowElem.hasChildNodes()) {
-//     tableRowElem.removeChild(tableRowElem.lastChild);
-//   }
-//   tableRowElem.remove();
-//   tableFooterElem.remove();
-// }
+// Event Handler
 
-// // Event Handler
-
-// function addLocation(event) {
-//   event.preventDefault();
-//   let form = event.target;
-//   let locationName = form.name.value;
-//   let locationMinCust = parseInt(form.minCust.value);
-//   let locationMaxCust = parseInt(form.maxCust.value);
-//   let locationAvgSale = parseFloat(form.avgSale.value);
-//   console.log(locationName, locationMinCust, locationMaxCust, locationAvgSale);
-//   let newLocation = new Location(locationName, locationMinCust, locationMaxCust, locationAvgSale);
+function addLocation(event) {
+  event.preventDefault();
+  let form = event.target;
+  let locationName = form.name.value;
+  let locationMinCust = parseInt(form.minCust.value);
+  let locationMaxCust = parseInt(form.maxCust.value);
+  let locationAvgSale = parseFloat(form.avgSale.value);
+  console.log(locationName, locationMinCust, locationMaxCust, locationAvgSale);
+  let newLocation = new Location(locationName, locationMinCust, locationMaxCust, locationAvgSale);
   
-//   form.name.value = null;
-//   form.minCust.value = null;
-//   form.maxCust.value = null;
-//   form.avgSale.value = null;
+  form.name.value = null;
+  form.minCust.value = null;
+  form.maxCust.value = null;
+  form.avgSale.value = null;
 
-//   tableFooter.innerHTML = "";
-//   createTableFooter();
+  let tableFooter = document.getElementById('tfoot');
+  createTableFooter();
+  console.log(allLocations);
   
-// };
+};
 
-// // Event Listener
+// Event Listener
 
-// let addLocationForm = document.getElementById('addLocationForm');
-// addLocationForm.addEventListener('submit', addLocation);
+let addLocationForm = document.getElementById('addLocationForm');
+addLocationForm.addEventListener('submit', addLocation);
 
 
 
