@@ -2,8 +2,8 @@
 let locations = ['seattle', 'tokyo', 'dubai', 'paris', 'lima'];
 let hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm"];
 let allLocations = [];
-locationTotals = [];
-grandTotal = 0;
+let locationTotals = [];
+let grandTotal = 0;
 
 function randomNumberCust(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min );
@@ -48,22 +48,22 @@ createTableHeader();
 
   // Replace all object literals for the salmon cookie stand with a single constructor function that, when called with the ‘new’ keyword, it creates a new instance.
 
-  function Location(name, minCust, maxCust, avgSale, hourlyCust, hourlyCookies, total) {
+  function Location(name, minCust, maxCust, avgSale) {
     this.name = name;
     this.minCust = minCust;
     this.maxCust = maxCust;
     this.avgSale = avgSale;
-    this.hourlyCust = hourlyCust;
-    this.hourlyCookies = hourlyCookies;
-    this.total = total;
+    this.hourlyCust = [];
+    this.hourlyCookies = [];
+    this.total = 0;
     allLocations.push(this);
   }
 
-  let seattle = new Location('seattle', '23', '68', '6.3', [], [], 0);
-  let tokyo = new Location('tokyo', '3', '24', '1.2', [], [], 0);
-  let dubai = new Location('dubai', '11', '38', '3.7', [], [], 0);
-  let paris = new Location('paris', '20', '28', '2.3', [], [], 0);
-  let lima = new Location('lima', '2', '16', '4.6', [], [], 0);
+  let seattle = new Location('seattle', '23', '68', '6.3');
+  let tokyo = new Location('tokyo', '3', '24', '1.2');
+  let dubai = new Location('dubai', '11', '38', '3.7');
+  let paris = new Location('paris', '20', '28', '2.3');
+  let lima = new Location('lima', '2', '16', '4.6');
 
   // Replace the lists of data for each store and build a single table of data instead. 
  
@@ -104,9 +104,9 @@ createTableHeader();
   };
 
   function createTableFooter() {
-    let tableFooter = document.createElement('tfoot');
-    tableFooter.setAttribute('id','tfoot');
-    table.appendChild(tableFooter);
+    let tableFooter = document.getElementById('table-footer');
+    // tableFooter.setAttribute('id','tfoot');
+    // table.appendChild(tableFooter);
     let tableRow = document.createElement('tr');
       tableFooter.appendChild(tableRow);
     let rowHeader = document.createElement('th');
@@ -128,11 +128,6 @@ createTableHeader();
 };
 
 // Each cookie stand location should have a separate render() method that creates and appends its row to the table
-  seattle.getRandomCust();
-  tokyo.getRandomCust();
-  dubai.getRandomCust();
-  paris.getRandomCust();
-  lima.getRandomCust();
 
 createLocationRows();
 
@@ -149,15 +144,15 @@ function addLocation(event) {
   let locationAvgSale = parseFloat(form.avgSale.value);
   console.log(locationName, locationMinCust, locationMaxCust, locationAvgSale);
   let newLocation = new Location(locationName, locationMinCust, locationMaxCust, locationAvgSale);
-  
+  document.getElementById('table-footer').innerHTML = null;
+  newLocation.render();
+  createTableFooter();
+
   form.name.value = null;
   form.minCust.value = null;
   form.maxCust.value = null;
   form.avgSale.value = null;
 
-  let tableFooter = document.getElementById('tfoot');
-  createTableFooter();
-  console.log(allLocations);
   
 };
 
