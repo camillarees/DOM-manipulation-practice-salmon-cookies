@@ -1,13 +1,20 @@
 h1 {
     text-align: center;
-    background-color: lightcoral;
+    background-color: cornflowerblue;
     padding: 10px;
     margin: 0;
     border: 1rem;
     border-color: black;
+    color: white;
     font-family: Helvetica;
     text-align: center;
-    font-family: Helvetica;
+    font-family: 'East Sea Dokdo';
+    font-size: 50pt;
+}
+
+a {
+    font-family: 'East Sea Dokdo';
+    font-size: 25pt;
 }
 
 h2 {
@@ -31,7 +38,7 @@ ul, li {
     background-color: lightpink;
     padding: 10px;
     margin: 0;
-    font-family: Helvetica;
+    font-family: Times;
 }
 
 p {
@@ -39,7 +46,7 @@ p {
     background-color: lightpink;
     padding: 10px;
     margin: 0;
-    font-family: Helvetica;
+    font-family: Times;
 }
 
 nav {
@@ -60,11 +67,10 @@ th, td {
 }
 
 td {
-    background-color: coral;
+    background-color: cornflowerblue;
     color: black;
 }
 
 #table-footer {
-    background-color: coral;
     color: black;
 }
